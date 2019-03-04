@@ -1,0 +1,15 @@
+{% extends "polls/layout.html" %}
+
+{% block body %}
+{% if user.is_active %}
+<div class="content">
+  <h2>Index </h2>
+    <p>Welcome, {{ user.get_username }}. Thanks for log in.</p>
+</div>
+  {% else %}
+  <div class="content">
+    <h2>Index</h2>
+        <p>Welcome, User. Please log in.</p>
+  </div>
+  {% endif %}
+  {% endblock %}

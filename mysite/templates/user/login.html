@@ -1,0 +1,7 @@
+{% extends "polls/layout.html" %}
+
+{% block body %}
+<div class="login">
+	{% include 'include/form.html' with form=login_form submit_title='login' %}
+</div>
+{% endblock %}

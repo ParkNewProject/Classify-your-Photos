@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <style>
+      body {margin: 0;}
+
+      .main {
+        margin-left: 20px;
+      }
+
+      .headname a{
+        color: white;
+        display: block;
+        font-size: 30px;
+        text-align: center;
+        padding: 14px 16px;
+        margin: 0;
+        text-decoration: none;
+        background-color: #333;
+      }
+
+      ul {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+      }
+
+
+      ul.topnav {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #444;
+      }
+
+      ul.topnav li {float: left;}
+
+      ul.topnav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+      ul.topnav li a.active {background-color: #5555aa;}
+
+      ul.topnav li.right {float: right;}
+
+      @media screen and (max-width: 600px) {
+        ul.topnav li.right,
+        ul.topnav li {float: none;}
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="headname">
+    <a href="/polls">Classify Your Photo</a>
+    </div>
+  <ul class="topnav">
+    {% if user.is_active %}
+    <li><a class="active" href="/polls/photos">Photos</a></li>
+
+    <li class="right"><a href="/user/logout">Logout</a></li>
+    <li class="right"><a href="/polls/upload">Upload</a></li>
+    {% else %}
+
+    <li class="right"><a href="/user/signup">Signup</a></li>
+    <li class="right"><a href="/user/login">Login</a></li>
+    {% endif %}
+  </ul>
+
+  <div class="main">
+    {% block body %}
+    {% endblock %}
+  </div>
+
+  </body>
+</html>
