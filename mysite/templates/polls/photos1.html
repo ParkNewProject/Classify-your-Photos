@@ -48,11 +48,11 @@
 </select>
 
 <ul>
-  {% for url in image_url %}
+  {% for i in length %}
     <li>
       <div class="gallery">
-        <img src= {{url}} class="img-responsive">
-      <div class="desc">name : tag : </div>
+        <img src= {{dic_image[i][0]}} class="img-responsive">
+      <div class="desc">name : {{dic_image[i][1]}} \n tag : {{dic_image[i][2]}}</div>#이거 다 안됨
     </div>
   </li>
   {% endfor %}

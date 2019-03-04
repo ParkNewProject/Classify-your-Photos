@@ -25,24 +25,16 @@ def photos(request):
     User = get_user_model()
     user = get_object_or_404(User, username=request.user.username)
     #
-    #if sort == 'tags':
-    #    photos = user.photo_set.order_by('-tags', '-created')
-    #else:
+    if sort == 'tags':
+        photos = user.photo_set.order_by('-tags', '-created')
+    else:
         photos = user.photo_set.order_by('-created')
     #
-    ctx = {
-        'user': user,
-        'photos': photos,
-    }
-    #
-    print(photos)
-    image_url=[]
+    dic_image=[]
     for p in photos:
-        image_url.append(p.image.url)
-        #image_tag.append(p.tags)
-        #image_name.append(p.image.name)
-    #
-    return render(request, 'polls/photos.html',{'image_url': image_url})
+        dic_image.append([p.image.url, p.tags, p.image.name])
+
+    return render(request, 'polls/photos.html',{'dic_image': dic_image, 'length':len(dic_image)})#이거 다 안됨
 
 import os
 from shutil import copyfile
